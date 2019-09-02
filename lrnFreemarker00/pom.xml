@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.7.RELEASE</version>
+		<version>2.1.6.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.aedunafy.freemarker</groupId>
 	<artifactId>lrnFreemarker00</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>lrnFreemarker00 Maven Webapp</name>
+	<name>lrnFreemarker00</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
@@ -24,7 +24,17 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -47,7 +57,12 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
+		 <!-- Freemarker -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
+        </dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -60,9 +75,9 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<spring.version>5.1.8.RELEASE</spring.version>
-		<freemarker.version>2.3.28</freemarker.version>
+		<freemarker.version>2.3.29</freemarker.version>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
-		<spring-boot.version>1.5.10.RELEASE</spring-boot.version>
+		
 	</properties>
 
 </project>
