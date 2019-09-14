@@ -1,16 +1,22 @@
 package com.aedunafy.lrnfm.config;
 
+import java.io.IOException;
+
+import javax.servlet.ServletContext;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @EnableWebMvc
 @Configuration
 @ComponentScan({ "com.aedunafy.lrnfm" })
-public class AppConfig {
+public class AppConfig implements WebMvcConfigurer{
 
 	@Bean
 	public FreeMarkerViewResolver freemarkerViewResolver() {
@@ -18,13 +24,21 @@ public class AppConfig {
 		resolver.setCache(true);
 		resolver.setPrefix("");
 		resolver.setSuffix(".ftl");
+		
+		resolver.setExposeRequestAttributes(true);
 		return resolver;
 	}
 	
 	@Bean 
-	public FreeMarkerConfigurer freemarkerConfig() { 
-	    FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer(); 
-	    freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/ftl/");
+	public FreeMarkerConfigurer freemarkerConfig(ServletContext servletContext) throws IOException { 
+	    FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+	    freeMarkerConfigurer.setTemplateLoaderPaths("WEB-INF/views/ftl/");
 	    return freeMarkerConfigurer; 
+	}
+	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {		
+		registry.addResourceHandler("/assets/**").addResourceLocations("/assets/");
+		registry.addResourceHandler("/css/**").addResourceLocations("/js/");
 	}
 }

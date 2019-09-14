@@ -63,6 +63,8 @@
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
         </dependency>
+        
+        
 	</dependencies>
 	<build>
 		<plugins>
