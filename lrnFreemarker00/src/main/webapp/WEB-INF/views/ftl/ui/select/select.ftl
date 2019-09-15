@@ -1,5 +1,8 @@
 <#import "/spring.ftl" as spring/>
 
-<#macro select value>
-	<@spring.formInput "${value}"/>
+<#macro select path>	
+	 
+	 <blog>
+		<@spring.formInput "${path}"/>
+	 </blog>
 </#macro>

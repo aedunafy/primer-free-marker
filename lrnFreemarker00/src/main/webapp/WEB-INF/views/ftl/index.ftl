@@ -1,6 +1,4 @@
-<#import "/spring.ftl" as spring/>
 <#import "ui/ui.ftl" as ui/>
-
 
 <html>
 <head>
@@ -8,26 +6,10 @@
 </head>
 <body>
 
-	<@ui.composition>
-		
-		<form action="test" method="post">
-		
-			<@spring.bind "person"/>
-			
-			<@ui.select "person.age.age"/>		
-			<br>
-			
-			<br>		
-			<@ui.text "person.name"/>			
-				
-			
-			<br>
-			<br>
-			
-			<@ui.submit/>
-			
-		</form>	
-	</@ui.composition>
+<@ui.form model="person" method="post" action="test">
+	<@ui.select "person.age.age"/>		
+	<@ui.submit/>
+</@ui.form>
 	
 </body>
 </html>
